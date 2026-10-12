@@ -20,17 +20,18 @@ For a better summary and nicer text see [Dobin's post](https://blog.deeb.ch/defe
 | 1  | 2017 | internal analysis + fuzzing        | mpengine.dll, static analysis      | [loadlibrary](https://github.com/taviso/loadlibrary)                                             | Tavis Ormandi     |
 | 2  | 2018 | internal analysis + fuzzing        | mpclient.dll, emulation engine     | [windowsdefendertools](https://github.com/0xalexei/windowsdefendertools)                         | Alexei Bulazel    |
 | 3  | 2021 | internal analysis                  | (yara) signatures, static analysis | [experiments](https://github.com/commial/experiments/blob/master/windows-defender/VDM/README.md) | Camille Mougey    |
-| 4  | 2023 | observation                        | amsi scanning, static analysis     | [avred](https://github.com/dobin/avred)                                                          | Dobin Rutishauser |
-| 5  | 2024 | observation                        | all*                               | [supermega](https://github.com/dobin/avred)                                                      | Dobin Rutishauser |
-| 6  | 2025 | observation                        | ETW runtime tracking               | [BamboozlEDR](https://github.com/olafhartong/BamboozlEDR)                                        | Olaf Hartong      |
-| 7  | 2025 | internal analysis + observation    | all*                               | [RedEdr](https://github.com/dobin/RedEdr) & [Detonator](https://github.com/dobin/Detonator)      | Dobin Rutishauser |
-| 8  | 2025 | observation                        | runtime tracking                   | [Decondition-Enumerator](https://github.com/evilele/Decondition-Enumerator)                      | Levi Cailleret    |
-| 9  | 2026 | internal analysis                  | store time, static + emulation     | [defender_overview](https://github.com/HackingLZ/defender_overview)                              | Justin Elze       |
-| 10 | 2026 | internal analysis + observation    | all*                               | [EDR-Introspection](https://github.com/evilele/EDR-Introspection)                                | Levi Cailleret    |
-| 11 | 2026 | observation                        | all*                               | [iEDR](https://github.com/evilele/iEDR)                                                          | Levi Cailleret    |
-| 12 | 2026 | internal analysis -> reversing     | all*                               | [heavener](https://github.com/otterpwn/heavener)                                                 | otterpwn          |
-| 13 | 2026 | internal analysis -> LLM reversing | all*                               | [LLM powered EDR analysis](https://specterops.io/blog/2026/06/29/llm-powered-edr-analysis/)      | Adam Chester      |
-| 14 | 2026 | observation -> reversing           | all*                               | [DefRev](https://github.com/dobin/DefRev)                                                        | Dobin Rutishauser |
+| 4  | 2022 | fuzzing + observation              | fuzzing MDE (but not anti-EDR)     | [CVE-2022–24548](https://medium.com/s2wblog/fuzzing-the-shield-cve-2022-24548-96f568980c0)       | Daejin Lee et al. |
+| 5  | 2023 | observation                        | amsi scanning, static analysis     | [avred](https://github.com/dobin/avred)                                                          | Dobin Rutishauser |
+| 6  | 2024 | observation                        | all*                               | [supermega](https://github.com/dobin/avred)                                                      | Dobin Rutishauser |
+| 7  | 2025 | observation                        | ETW runtime tracking               | [BamboozlEDR](https://github.com/olafhartong/BamboozlEDR)                                        | Olaf Hartong      |
+| 8  | 2025 | internal analysis + observation    | all*                               | [RedEdr](https://github.com/dobin/RedEdr) & [Detonator](https://github.com/dobin/Detonator)      | Dobin Rutishauser |
+| 9  | 2025 | observation                        | runtime tracking                   | [Decondition-Enumerator](https://github.com/evilele/Decondition-Enumerator)                      | Levi Cailleret    |
+| 10 | 2026 | internal analysis                  | store time, static + emulation     | [defender_overview](https://github.com/HackingLZ/defender_overview)                              | Justin Elze       |
+| 11 | 2026 | internal analysis + observation    | all*                               | [EDR-Introspection](https://github.com/evilele/EDR-Introspection)                                | Levi Cailleret    |
+| 12 | 2026 | observation                        | all*                               | [iEDR](https://github.com/evilele/iEDR)                                                          | Levi Cailleret    |
+| 13 | 2026 | internal analysis -> reversing     | all*                               | [heavener](https://github.com/otterpwn/heavener)                                                 | otterpwn          |
+| 14 | 2026 | internal analysis -> LLM reversing | all*                               | [LLM powered EDR analysis](https://specterops.io/blog/2026/06/29/llm-powered-edr-analysis/)      | Adam Chester      |
+| 15 | 2026 | observation -> reversing           | all*                               | [DefRev](https://github.com/dobin/DefRev)                                                        | Dobin Rutishauser |
 
 ## Interpretation
 
@@ -38,11 +39,11 @@ The tools can be split into 3 "phases", each of which describe the (publicly) av
 
 ### Internal static Analysis
 
-First are "internal" analysis tools, rows 1-3, extracting some part of Defender and attacking and understanding it in isolation. Understanding these parts helped us understand how the store time analysis (static and emulation)
+First are "internal" analysis tools, rows 1-3, extracting some part of Defender and attacking and understanding it in isolation. Understanding these parts helped us understand how the store time analysis (static and emulation). Row 4 is special in the regard that it "just" fuzzes MDE to find vulns, with the only part of "anti-EDR" research being to better understand MsMpEng.exe and mpengine.dll.
 
 ### Observation of running MDE
 
-From 2021 up until 2025, rows 4-8, a new paradigm of analysis was developed, as in "Observing how the actual MDE behaves in light of malware".[Detonator](https://github.com/dobin/Detonator) leverages insights from [RedEdr](https://github.com/dobin/RedEdr) to further enhance visibility and thus insights into analysis logic of MDE.
+From 2021 up until 2025, rows 5-8, a new paradigm of analysis was developed, as in "Observing how the actual MDE behaves in light of malware".[Detonator](https://github.com/dobin/Detonator) leverages insights from [RedEdr](https://github.com/dobin/RedEdr) to further enhance visibility and thus insights into analysis logic of MDE.
 
 ### LLM driven internal static Analysis
 
