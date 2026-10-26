@@ -6,5 +6,9 @@ I'm super proud to have presented [**EDR Introspection**](https://github.com/evi
 * [Area41 Slides](https://drive.proton.me/urls/ER2JWX2ZWC#6i9CiXoB3NGu)
 
 ## Live Recording
-* [x33fcon Recording](TBD)
-* [Area41 Recording](https://youtu.be/vqty37beAmc?si=W0sdDQYzHcxJSVnE)
+* [x33fcon Recording](https://www.youtube.com/watch?v=zAm8GkPCcxA)
+* [Area41 Recording](https://www.youtube.com/watch?v=vqty37beAmc)
+
+## Ratings
+I'm even more honored that people liked it:
+![ratings](/static/edri-talks/chart.png)
