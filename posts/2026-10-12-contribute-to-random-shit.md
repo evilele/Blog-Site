@@ -1,10 +1,10 @@
 # How to Learn about and Contribute to interesting Repos
 
-> *This is a small write-up about how I get interested about reading and maybe even contributing to random projects, as an example I'll take [KDU](github.com/hfiref0x/KDU) and [ThreadlessInject](github.com/CCob/ThreadlessInject)*
+> *This is a small write-up about how I get interested about reading and maybe even contributing to random projects, as an example I'll take [KDU](https://github.com/hfiref0x/KDU) and [ThreadlessInject](https://github.com/CCob/ThreadlessInject)*
 
 # 1. Look up Tools similar to yours
 
-I was refining my [InjectLoader](github.com/evilele/EDR-Introspection) to move away from EdrSandblast (eww, kernel callbacks), and only depend on [KDU](github.com/hfiref0x/KDU) and it's `-pho` mode. 
+I was refining my [InjectLoader](https://github.com/evilele/EDR-Introspection) to move away from EdrSandblast (eww, kernel callbacks), and only depend on [KDU](https://github.com/hfiref0x/KDU) and it's `-pho` mode. 
 This required to again expand KDU's user-mode code base, which I was kind of familiar at this point. Nevertheless, I had to learn how the kernel handles handles (hehe), how to find and patch them.
 <br><br>
 Following this I had process and thread handles to protected processes, but still no generic way to execute code. Also, only being able to load DLLs with reflective loading limits the DLLs to be custom ones (with a custom reflective loader entrypoint).
@@ -12,7 +12,7 @@ Following this I had process and thread handles to protected processes, but stil
 
 1. Host (manual) mapped DLL injection from [DLLium](https://github.com/Paxai/DLLium)
 2. Generic thread hijacking, i.e. clean function prologue, shellcode calling and epilogue from [GuidedHacking](https://github.com/guidedhacking/GuidedHacking-Injector)
-3. Executing shellcode without* an executor, NANI?! [ThreadlessInject](github.com/CCob/ThreadlessInject)
+3. Executing shellcode without* an executor, NANI?! [ThreadlessInject](https://github.com/CCob/ThreadlessInject)
 
 # 2. Plan and implement your Improvements
 
